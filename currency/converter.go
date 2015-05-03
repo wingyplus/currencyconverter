@@ -24,6 +24,7 @@ func Convert(from, to string) (result QueryResult, err error) {
 	if err != nil {
 		return
 	}
+	defer resp.Body.Close()
 	err = json.NewDecoder(resp.Body).Decode(&result)
 	return
 }
